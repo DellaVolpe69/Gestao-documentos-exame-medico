@@ -10,6 +10,24 @@ import time
 import requests
 
 
+# --- LINK DIRETO DA IMAGEM NO GITHUB ---
+url_imagem = "https://raw.githubusercontent.com/DellaVolpe69/Images/main/AppBackground02.png"
+url_logo = "https://raw.githubusercontent.com/DellaVolpe69/Images/main/DellaVolpeLogoBranco.png"
+fox_image = "https://raw.githubusercontent.com/DellaVolpe69/Images/main/Foxy4.png"
+
+st.markdown(
+    f"""
+    <style>
+    /* Remove fundo padrão dos elementos de cabeçalho que às vezes ‘brigam’ com o BG */
+    header, [data-testid="stHeader"] {{
+        background: transparent;
+    }}
+    </style>
+    """,
+    unsafe_allow_html=True
+)
+
+
 modulos_dir = Path(__file__).parent / "Modulos"
 
 # Se o diretório ainda não existir, faz o clone direto do GitHub
@@ -107,16 +125,81 @@ st.set_page_config(
 
 # ---------------------------------------------------
 # CSS
-# ---------------------------------------------------
-st.markdown("""
+st.markdown(f"""
     <style>
-    section[data-testid="stSidebar"] h1 {
-        text-align: center;
-        color: orange;
-    }
-    <meta name="google" content="notranslate">  
+        [data-testid="stAppViewContainer"] {{
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)),
+                        url("{url_imagem}");
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }}
+
+        /* Inputs padrão: text_input, number_input, date_input, etc */
+        input, textarea {{
+            border: 1px solid white !important;
+            border-radius: 5px !important;
+        }}
+        
+        /* Selectbox (parte fechada) */
+        .stSelectbox div[data-baseweb="select"] > div {{
+            border: 1px solid white !important;
+            border-radius: 5px !important;
+        }}
+        
+        /* Date input container */
+        .stDateInput input {{
+            border: 1px solid white !important;
+            border-radius: 5px !important;
+        }}
+
+        .stButton > button {{
+            background-color: #FF5D01 !important;
+            color: white !important;
+            border: 2px solid white !important;
+            padding: 0.6em 1.2em;
+            border-radius: 10px !important;
+            font-size: 1rem;
+            font-weight: 500;
+            font-color: white !important;
+            cursor: pointer;
+            transition: 0.2s ease;
+            text-decoration: none !important;   /* 👈 AQUI remove de vez */
+            display: inline-block;
+        }}
+        .stButton > button:hover {{
+            background-color: white !important;
+            color: #FF5D01 !important;
+            transform: scale(1.03);
+            font-color: #FF5D01 !important;
+            border: 2px solid #FF5D01 !important;
+        }}
+
+        /* RODAPÉ FIXO */
+        .footer {{
+            position: fixed;
+            left: 0;
+            bottom: 0;
+            width: 100%;
+            background: rgba(0, 0, 0, 0.6);
+            color: white;
+            text-align: center;
+            font-size: 14px;
+            padding: 8px 0;
+            text-shadow: 1px 1px 2px black;
+        }}
+        .footer a {{
+            color: #FF5D01;
+            text-decoration: none;
+            font-weight: bold;
+        }}
+        .footer a:hover {{
+            text-decoration: underline;
+        }}
+        
     </style>
 """, unsafe_allow_html=True)
+
 
 # ---------------------------------------------------
 # STATE DA NAVEGAÇÃO
