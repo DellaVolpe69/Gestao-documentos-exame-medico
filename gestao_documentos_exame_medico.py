@@ -200,6 +200,13 @@ st.markdown(f"""
     </style>
 """, unsafe_allow_html=True)
 
+def rodape():
+    st.markdown("""
+        <div class="footer">
+            © 2025 <b>Della Volpe</b> | Desenvolvido por <a href="#">Raphael Chiavegati Oliveira</a>
+        </div>
+    """, unsafe_allow_html=True)
+
 
 # ---------------------------------------------------
 # STATE DA NAVEGAÇÃO
@@ -258,7 +265,7 @@ if st.session_state.page == "add":
                     data_venc.isoformat(),
                     status
                 )
-
+rodape()
 
 # ===================================================
 # ====================== EDITAR =====================
@@ -327,3 +334,4 @@ if st.session_state.page == "edit":
             if st.button("Excluir registro"):
                 deletar_registro_por_bp(bp_original)
                 st.session_state.registro_encontrado = None
+rodape()
